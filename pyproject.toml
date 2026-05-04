@@ -1,0 +1,28 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "mcp-sigstore"
+version = "0.1.0"
+description = "MCP App Distribution Integrity Verification Server — Sigstore for MCP Ecosystem"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "mcp>=1.27.0",
+    "httpx>=0.27.0",
+    "cryptography>=46.0.0",
+    "pydantic>=2.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.24.0",
+]
+
+[project.scripts]
+mcp-sigstore = "mcp_sigstore.server:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/mcp_sigstore"]
